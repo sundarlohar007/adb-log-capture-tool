@@ -13,7 +13,6 @@ This is a simple yet powerful Batch tool designed to capture logs from an Androi
 - Shows **device info**, including manufacturer, model, SDK version
 - Runs logcat filtered by PID (focused logs)
 - Keeps window open after logging
-- Clean ASCII art branding included!
 
 ---
 
@@ -27,9 +26,9 @@ This is a simple yet powerful Batch tool designed to capture logs from an Androi
 
 ## Usage
 
-1. Connect your Android device (via USB or WiFi)
-2. Run `adb_log_capture.bat`
-3. Select ADB connection type
+1. Open the bat file and enter your application name under : set "APP_FILTER= ENTER_YOUR_APP_NAME_HERE"
+2. Connect your Android device (via USB or WiFi debugging)
+3. Run `adb_log_capture.bat`
 4. Wait for app detection (default app filter is `"EMPTY"`)
 5. Logging will start — press any key to stop
 
