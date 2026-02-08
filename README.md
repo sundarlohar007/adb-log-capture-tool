@@ -33,3 +33,14 @@ This is a simple yet powerful Batch tool designed to capture logs from an Androi
 5. Logging will start — press any key to stop
 
 The logs will be saved in the same folder with names like:
+
+## Windows PowerShell Validation (for WPF scaffold checks)
+
+If you are validating the new WPF UI scaffold on Windows PowerShell, run:
+
+```powershell
+./scripts/Validate-UiScaffold.ps1
+```
+
+Why: Windows PowerShell 5.1 does not support Bash `&&` chaining and typically does not include `sed` by default. The script uses PowerShell-native command sequencing and `Get-Content` instead.
+
