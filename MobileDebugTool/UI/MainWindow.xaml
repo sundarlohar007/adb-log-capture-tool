@@ -51,5 +51,11 @@
         <Border Grid.Row="2" Style="{StaticResource CardBorderStyle}">
             <TextBlock Style="{StaticResource MutedTextStyle}" Text="Status: Idle" />
         </Border>
+    <Grid>
+        <TextBlock HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="20"
+                   FontWeight="SemiBold"
+                   Text="All-in-One Mobile Debugging Tool" />
     </Grid>
 </Window>
