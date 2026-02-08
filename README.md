@@ -42,5 +42,17 @@ If you are validating the new WPF UI scaffold on Windows PowerShell, run:
 ./scripts/Validate-UiScaffold.ps1
 ```
 
-Why: Windows PowerShell 5.1 does not support Bash `&&` chaining and typically does not include `sed` by default. The script uses PowerShell-native command sequencing and `Get-Content` instead.
+If you want to run commands manually in PowerShell 5.1, use this form (no `&&`, `sed`, `nl`, or `tail`):
+
+```powershell
+git status --short
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+Get-ChildItem MobileDebugTool/UI/Theme -File | Select-Object -ExpandProperty FullName
+
+Get-Content MobileDebugTool/UI/MainWindow.xaml -TotalCount 220
+Get-Content MobileDebugTool/App.xaml -TotalCount 220
+```
+
+Why: Windows PowerShell 5.1 does not support Bash `&&` chaining, and Unix tools like `sed`, `nl`, and `tail` are typically unavailable by default.
 
