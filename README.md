@@ -50,13 +50,6 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 .\scripts\Validate-UiScaffold.ps1
 ```
 
-
-For repository-level checks (status + reference search + README line preview) in VS Developer PowerShell, run:
-
-```powershell
-.\scripts\Validate-RepoState.ps1
-```
-
 If you want to run commands manually in PowerShell 5.1, use this form (no `&&`, `sed`, `nl`, or `tail`):
 
 ```powershell
