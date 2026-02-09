@@ -1,0 +1,10 @@
+using MobileDebugTool.Models;
+
+namespace MobileDebugTool.Services.AndroidService;
+
+public interface IAndroidService
+{
+    string ResolveAdbPath();
+    Task<bool> IsAdbAvailableAsync(CancellationToken cancellationToken);
+    Task<IReadOnlyList<AndroidDevice>> GetConnectedDevicesAsync(CancellationToken cancellationToken);
+}
