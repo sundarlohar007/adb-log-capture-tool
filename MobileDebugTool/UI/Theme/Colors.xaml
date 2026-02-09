@@ -1,0 +1,17 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Dark Neumorphism base palette -->
+    <Color x:Key="Color.Background">#1E222A</Color>
+    <Color x:Key="Color.Surface">#252B35</Color>
+    <Color x:Key="Color.SurfaceAlt">#2B3240</Color>
+    <Color x:Key="Color.TextPrimary">#E8EDF5</Color>
+    <Color x:Key="Color.TextMuted">#A6B0C0</Color>
+    <Color x:Key="Color.Accent">#4DA3FF</Color>
+
+    <SolidColorBrush x:Key="Brush.Background" Color="{StaticResource Color.Background}" />
+    <SolidColorBrush x:Key="Brush.Surface" Color="{StaticResource Color.Surface}" />
+    <SolidColorBrush x:Key="Brush.SurfaceAlt" Color="{StaticResource Color.SurfaceAlt}" />
+    <SolidColorBrush x:Key="Brush.TextPrimary" Color="{StaticResource Color.TextPrimary}" />
+    <SolidColorBrush x:Key="Brush.TextMuted" Color="{StaticResource Color.TextMuted}" />
+    <SolidColorBrush x:Key="Brush.Accent" Color="{StaticResource Color.Accent}" />
+</ResourceDictionary>
