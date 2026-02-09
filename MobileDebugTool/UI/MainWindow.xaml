@@ -18,10 +18,12 @@
             <DockPanel>
                 <StackPanel Orientation="Vertical" DockPanel.Dock="Left">
                     <TextBlock FontSize="20" FontWeight="SemiBold" Text="All-in-One Mobile Debugging Tool" />
-                    <TextBlock Style="{StaticResource MutedTextStyle}" Text="Phase 2 · Android Device Detection" />
+                    <TextBlock Style="{StaticResource MutedTextStyle}" Text="Phase 1 · Dark UI Foundation" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button x:Name="RefreshDevicesButton" Content="Refresh Devices" Click="OnRefreshDevicesClick" />
+                    <Button Content="Start" IsEnabled="False" />
+                    <Button Content="Pause" IsEnabled="False" />
+                    <Button Content="Stop" IsEnabled="False" />
                 </StackPanel>
             </DockPanel>
         </Border>
@@ -38,13 +40,7 @@
 
             <StackPanel Grid.Column="1">
                 <Border Style="{StaticResource CardBorderStyle}">
-                    <StackPanel>
-                        <TextBlock Text="Connected Android Devices" FontWeight="SemiBold" Margin="0,0,0,8" />
-                        <ListBox x:Name="DevicesListBox"
-                                 MinHeight="120"
-                                 Background="{StaticResource Brush.SurfaceAlt}"
-                                 BorderThickness="0" />
-                    </StackPanel>
+                    <TextBlock Style="{StaticResource MutedTextStyle}" Text="Connected device placeholder" />
                 </Border>
                 <Border Style="{StaticResource CardBorderStyle}">
                     <TextBlock Style="{StaticResource MutedTextStyle}" Text="Device info placeholder" />
@@ -53,7 +49,7 @@
         </Grid>
 
         <Border Grid.Row="2" Style="{StaticResource CardBorderStyle}">
-            <TextBlock x:Name="StatusTextBlock" Style="{StaticResource MutedTextStyle}" Text="Status: Idle" />
+            <TextBlock Style="{StaticResource MutedTextStyle}" Text="Status: Idle" />
         </Border>
     </Grid>
 </Window>
