@@ -12,7 +12,6 @@ public partial class MainWindow : Window
     private readonly IAndroidLogStreamService _logStreamService;
 
     private readonly SemaphoreSlim _refreshGate = new(1, 1);
-    private bool _isLogPaused;
 
     public MainWindow()
     {
@@ -84,9 +83,6 @@ public partial class MainWindow : Window
 
             await _logStreamService.StartAsync(OnLogEntry, CancellationToken.None);
 
-            _isLogPaused = false;
-            PauseLogButton.Content = "Pause Logging";
-            PauseLogButton.IsEnabled = true;
             StopLogButton.IsEnabled = true;
             StatusTextBlock.Text = "Status: Log streaming started";
         }
@@ -101,14 +97,11 @@ public partial class MainWindow : Window
     {
         try
         {
-            PauseLogButton.IsEnabled = false;
             StopLogButton.IsEnabled = false;
             StatusTextBlock.Text = "Status: Stopping log stream...";
 
             await _logStreamService.StopAsync();
 
-            _isLogPaused = false;
-            PauseLogButton.Content = "Pause Logging";
             StartLogButton.IsEnabled = true;
             StatusTextBlock.Text = "Status: Log streaming stopped";
         }
@@ -118,29 +111,8 @@ public partial class MainWindow : Window
         }
     }
 
-
-    private void OnPauseLoggingClick(object sender, RoutedEventArgs e)
-    {
-        if (!_logStreamService.IsRunning)
-        {
-            StatusTextBlock.Text = "Status: Logging is not running";
-            return;
-        }
-
-        _isLogPaused = !_isLogPaused;
-        PauseLogButton.Content = _isLogPaused ? "Resume Logging" : "Pause Logging";
-        StatusTextBlock.Text = _isLogPaused
-            ? "Status: Logging paused"
-            : "Status: Logging resumed";
-    }
-
     private void OnLogEntry(LogEntry entry)
     {
-        if (_isLogPaused)
-        {
-            return;
-        }
-
         _logBuffer.Add(entry);
 
         Dispatcher.Invoke(() =>
