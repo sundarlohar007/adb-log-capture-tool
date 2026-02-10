@@ -1,0 +1,111 @@
+<Window x:Class="MobileDebugTool.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Mobile Debug Tool"
+        Width="1280"
+        Height="720"
+        MinWidth="1024"
+        MinHeight="640"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Border Style="{StaticResource CardBorderStyle}" Grid.Row="0">
+            <DockPanel>
+                <StackPanel Orientation="Vertical" DockPanel.Dock="Left">
+                    <TextBlock FontSize="20" FontWeight="SemiBold" Text="All-in-One Mobile Debugging Tool" />
+                    <TextBlock Style="{StaticResource MutedTextStyle}" Text="Phase 2 · Android Device Detection + Log Streaming" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="RefreshDevicesButton" Content="Refresh Devices" Click="OnRefreshDevicesClick" />
+                    <Button x:Name="ScreenshotButton" Content="Capture Screenshot" Click="OnCaptureScreenshotClick" />
+                    <Button x:Name="InstallApkButton" Content="Install APK" Click="OnInstallApkClick" />
+                    <Button x:Name="StartLogButton" Content="Start Logging" Click="OnStartLoggingClick" />
+                    <Button x:Name="PauseLogButton" Content="Pause Logging" Click="OnPauseLoggingClick" IsEnabled="False" />
+                    <Button x:Name="StopLogButton" Content="Stop Logging" Click="OnStopLoggingClick" IsEnabled="False" />
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Style="{StaticResource CardBorderStyle}">
+                <StackPanel>
+                    <TextBlock Text="Live Logs (preview)" FontWeight="SemiBold" Margin="0,0,0,8" />
+                    <ListBox x:Name="LiveLogsListBox"
+                             MinHeight="240"
+                             MaxHeight="460"
+                             Background="{StaticResource Brush.SurfaceAlt}"
+                             BorderThickness="0">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Message}" Foreground="{Binding Foreground}" />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </Border>
+
+            <StackPanel Grid.Column="1">
+                <Border Style="{StaticResource CardBorderStyle}">
+                    <StackPanel>
+                        <TextBlock Text="Connected Android Devices" FontWeight="SemiBold" Margin="0,0,0,8" />
+                        <TextBlock Style="{StaticResource MutedTextStyle}" Text="Selecting first detected device for info." Margin="0,0,0,8" />
+                        <ListBox x:Name="DevicesListBox"
+                                 MinHeight="120"
+                                 Background="{StaticResource Brush.SurfaceAlt}"
+                                 BorderThickness="0" />
+                    </StackPanel>
+                </Border>
+                <Border Style="{StaticResource CardBorderStyle}">
+                    <StackPanel>
+                        <TextBlock Text="Device Info" FontWeight="SemiBold" Margin="0,0,0,8" />
+                        <TextBlock x:Name="DeviceInfoTextBlock" Style="{StaticResource MutedTextStyle}" Text="No device info loaded" TextWrapping="Wrap" />
+                    </StackPanel>
+                </Border>
+                <Border Style="{StaticResource CardBorderStyle}">
+                    <StackPanel>
+                        <TextBlock Text="Recent Device History (Last 5)" FontWeight="SemiBold" Margin="0,0,0,8" />
+                        <ListBox x:Name="RecentHistoryListBox"
+                                 MinHeight="90"
+                                 Background="{StaticResource Brush.SurfaceAlt}"
+                                 BorderThickness="0" />
+                    </StackPanel>
+                </Border>
+                <Border Style="{StaticResource CardBorderStyle}">
+                    <StackPanel>
+                        <TextBlock Text="Crash Filters" FontWeight="SemiBold" Margin="0,0,0,8" />
+                        <WrapPanel>
+                            <CheckBox x:Name="FatalFilterCheckBox" Content="FATAL" IsChecked="True" Margin="0,0,10,0" />
+                            <CheckBox x:Name="ErrorFilterCheckBox" Content="ERROR" IsChecked="True" Margin="0,0,10,0" />
+                            <CheckBox x:Name="ExceptionFilterCheckBox" Content="EXCEPTION" IsChecked="True" />
+                        </WrapPanel>
+                    </StackPanel>
+                </Border>
+                <Border Style="{StaticResource CardBorderStyle}">
+                    <StackPanel>
+                        <CheckBox x:Name="AutoScrollCheckBox"
+                                  Content="Auto-scroll"
+                                  IsChecked="True"
+                                  Margin="0,0,0,8" />
+                        <TextBlock x:Name="LogStatsTextBlock"
+                                   Style="{StaticResource MutedTextStyle}"
+                                   Text="Log buffer: 0 / 20000" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+
+        <Border Grid.Row="2" Style="{StaticResource CardBorderStyle}">
+            <TextBlock x:Name="StatusTextBlock" Style="{StaticResource MutedTextStyle}" Text="Status: Idle" />
+        </Border>
+    </Grid>
+</Window>
