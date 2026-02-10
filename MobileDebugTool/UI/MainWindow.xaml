@@ -18,15 +18,12 @@
             <DockPanel>
                 <StackPanel Orientation="Vertical" DockPanel.Dock="Left">
                     <TextBlock FontSize="20" FontWeight="SemiBold" Text="All-in-One Mobile Debugging Tool" />
-                    <TextBlock Style="{StaticResource MutedTextStyle}" Text="Phase 2 · Android Device Detection + Log Streaming" />
+                    <TextBlock Style="{StaticResource MutedTextStyle}" Text="Phase 1 · Dark UI Foundation" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button x:Name="RefreshDevicesButton" Content="Refresh Devices" Click="OnRefreshDevicesClick" />
-                    <Button x:Name="ScreenshotButton" Content="Capture Screenshot" Click="OnCaptureScreenshotClick" />
-                    <Button x:Name="InstallApkButton" Content="Install APK" Click="OnInstallApkClick" />
-                    <Button x:Name="StartLogButton" Content="Start Logging" Click="OnStartLoggingClick" />
-                    <Button x:Name="PauseLogButton" Content="Pause Logging" Click="OnPauseLoggingClick" IsEnabled="False" />
-                    <Button x:Name="StopLogButton" Content="Stop Logging" Click="OnStopLoggingClick" IsEnabled="False" />
+                    <Button Content="Start" IsEnabled="False" />
+                    <Button Content="Pause" IsEnabled="False" />
+                    <Button Content="Stop" IsEnabled="False" />
                 </StackPanel>
             </DockPanel>
         </Border>
@@ -38,65 +35,21 @@
             </Grid.ColumnDefinitions>
 
             <Border Grid.Column="0" Style="{StaticResource CardBorderStyle}">
-                <StackPanel>
-                    <TextBlock Text="Live Logs (preview)" FontWeight="SemiBold" Margin="0,0,0,8" />
-                    <ListBox x:Name="LiveLogsListBox"
-                             MinHeight="240"
-                             MaxHeight="460"
-                             Background="{StaticResource Brush.SurfaceAlt}"
-                             BorderThickness="0">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Message}" Foreground="{Binding Foreground}" />
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                </StackPanel>
+                <TextBlock Style="{StaticResource MutedTextStyle}" Text="Live logs view placeholder" />
             </Border>
 
             <StackPanel Grid.Column="1">
                 <Border Style="{StaticResource CardBorderStyle}">
-                    <StackPanel>
-                        <TextBlock Text="Connected Android Devices" FontWeight="SemiBold" Margin="0,0,0,8" />
-                        <TextBlock Style="{StaticResource MutedTextStyle}" Text="Selecting first detected device for info." Margin="0,0,0,8" />
-                        <ListBox x:Name="DevicesListBox"
-                                 MinHeight="120"
-                                 Background="{StaticResource Brush.SurfaceAlt}"
-                                 BorderThickness="0" />
-                    </StackPanel>
+                    <TextBlock Style="{StaticResource MutedTextStyle}" Text="Connected device placeholder" />
                 </Border>
                 <Border Style="{StaticResource CardBorderStyle}">
-                    <StackPanel>
-                        <TextBlock Text="Device Info" FontWeight="SemiBold" Margin="0,0,0,8" />
-                        <TextBlock x:Name="DeviceInfoTextBlock" Style="{StaticResource MutedTextStyle}" Text="No device info loaded" TextWrapping="Wrap" />
-                    </StackPanel>
-                </Border>
-                <Border Style="{StaticResource CardBorderStyle}">
-                    <StackPanel>
-                        <TextBlock Text="Crash Filters" FontWeight="SemiBold" Margin="0,0,0,8" />
-                        <WrapPanel>
-                            <CheckBox x:Name="FatalFilterCheckBox" Content="FATAL" IsChecked="True" Margin="0,0,10,0" />
-                            <CheckBox x:Name="ErrorFilterCheckBox" Content="ERROR" IsChecked="True" Margin="0,0,10,0" />
-                            <CheckBox x:Name="ExceptionFilterCheckBox" Content="EXCEPTION" IsChecked="True" />
-                        </WrapPanel>
-                    </StackPanel>
-                </Border>
-                <Border Style="{StaticResource CardBorderStyle}">
-                    <StackPanel>
-                        <CheckBox x:Name="AutoScrollCheckBox"
-                                  Content="Auto-scroll"
-                                  IsChecked="True"
-                                  Margin="0,0,0,8" />
-                        <TextBlock x:Name="LogStatsTextBlock"
-                                   Style="{StaticResource MutedTextStyle}"
-                                   Text="Log buffer: 0 / 20000" />
-                    </StackPanel>
+                    <TextBlock Style="{StaticResource MutedTextStyle}" Text="Device info placeholder" />
                 </Border>
             </StackPanel>
         </Grid>
 
         <Border Grid.Row="2" Style="{StaticResource CardBorderStyle}">
-            <TextBlock x:Name="StatusTextBlock" Style="{StaticResource MutedTextStyle}" Text="Status: Idle" />
+            <TextBlock Style="{StaticResource MutedTextStyle}" Text="Status: Idle" />
         </Border>
     </Grid>
 </Window>
